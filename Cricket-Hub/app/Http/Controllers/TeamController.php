@@ -2,63 +2,61 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Team;
 use Illuminate\Http\Request;
 
 class TeamController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    // Display a list of all teams
     public function index()
     {
-        //
+        $teams = Team::all(); // Fetch all teams
+        return view('teams.index', compact('teams'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    // Show the form for creating a new team
     public function create()
     {
-        //
+        return view('teams.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    // Store a newly created team in the database
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'coach' => 'nullable|string',
+            'city' => 'nullable|string',
+        ]);
+
+        Team::create($request->all());
+        return redirect()->route('teams.index')->with('success', 'Team created successfully!');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    // Show the form for editing an existing team
+    public function edit(Team $team)
     {
-        //
+        return view('teams.edit', compact('team'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    // Update an existing team in the database
+    public function update(Request $request, Team $team)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'coach' => 'nullable|string',
+            'city' => 'nullable|string',
+        ]);
+
+        $team->update($request->all());
+        return redirect()->route('teams.index')->with('success', 'Team updated successfully!');
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    // Delete a team from the database
+    public function destroy(Team $team)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        $team->delete();
+        return redirect()->route('teams.index')->with('success', 'Team deleted successfully!');
     }
 }
+
