@@ -1,11 +1,9 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\TeamController;
+use App\Http\Controllers\PlayerController;
 use Illuminate\Support\Facades\Route;
-
-
 
 Route::get('/', function () {
     return view('welcome');
@@ -21,9 +19,16 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::resource('players', PlayerController::class);
 
 
-Route::resource('teams', TeamController::class);
+Route::middleware(['auth'])->group(function () {
+    Route::resource('teams', TeamController::class);
+});
+
+Route::middleware(['auth'])->group(function():void{
+    Route::resource('players',PlayerController::class);
+});
+
 
 require __DIR__.'/auth.php';
+
