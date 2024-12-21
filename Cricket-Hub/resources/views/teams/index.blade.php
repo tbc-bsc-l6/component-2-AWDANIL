@@ -27,5 +27,23 @@
             </li>
         @endforeach
     </ul>
+
+     <!-- Search Form -->
+     <form method="GET" action="{{ route('teams.index') }}">
+        <input type="text" name="search" placeholder="Search teams" value="{{ request('search') }}">
+        <button type="submit">Search</button>
+    </form>
+
+    <!-- Sorting Links -->
+    <h3>Sort By:</h3>
+    <a href="{{ route('teams.index', ['sort' => 'name', 'direction' => 'asc']) }}">Name Ascending</a> |
+    <a href="{{ route('teams.index', ['sort' => 'name', 'direction' => 'desc']) }}">Name Descending</a>
+
+    <!-- Display Teams -->
+    <ul>
+        @foreach ($teams as $team)
+            <li>{{ $team->name }} (Coach: {{ $team->coach }}, City: {{ $team->city }})</li>
+        @endforeach
+    </ul>
 </body>
 </html>

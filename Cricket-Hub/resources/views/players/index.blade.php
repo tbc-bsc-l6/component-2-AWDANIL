@@ -26,5 +26,30 @@
             </li>
         @endforeach
     </ul>
+
+    <!-- Search Form -->
+    <form method="GET" action="{{ route('players.index') }}">
+        <input type="text" name="search" placeholder="Search players" value="{{ request('search') }}">
+        <button type="submit">Search</button>
+    </form>
+
+    <!-- Sorting Links -->
+    <h3>Sort By:</h3>
+    <a href="{{ route('players.index', ['sort' => 'name', 'direction' => 'asc']) }}">Name Ascending</a> |
+    <a href="{{ route('players.index', ['sort' => 'name', 'direction' => 'desc']) }}">Name Descending</a> |
+    <a href="{{ route('players.index', ['sort' => 'role', 'direction' => 'asc']) }}">Role Ascending</a> |
+    <a href="{{ route('players.index', ['sort' => 'role', 'direction' => 'desc']) }}">Role Descending</a>
+
+    <!-- Display Players -->
+    <ul>
+        @foreach ($players as $player)
+            <li>
+                {{ $player->name }} - {{ $player->role }}
+                @if ($player->team)
+                    (Team: {{ $player->team->name }})
+                @endif
+            </li>
+        @endforeach
+    </ul>
 </body>
 </html>

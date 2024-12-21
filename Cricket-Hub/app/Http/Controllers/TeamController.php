@@ -8,11 +8,26 @@ use Illuminate\Http\Request;
 class TeamController extends Controller
 {
     // Display a list of all teams
-    public function index()
+    public function index(Request $request)
     {
-        $teams = Team::all(); // Fetch all teams
+        $query = Team::query(); // Start a query for the Team model
+    
+        // Add Search Functionality
+        if ($request->filled('search')) {
+            $query->where('name', 'like', '%' . $request->search . '%');
+        }
+    
+        // Add Sorting Functionality
+        if ($request->filled('sort')) {
+            $sortBy = $request->sort; // Column to sort by
+            $sortDirection = $request->direction === 'desc' ? 'desc' : 'asc'; // Sort direction (asc/desc)
+            $query->orderBy($sortBy, $sortDirection);
+        }
+    
+        $teams = $query->get(); // Fetch the results
         return view('teams.index', compact('teams'));
     }
+    
 
     // Show the form for creating a new team
     public function create()
@@ -58,5 +73,7 @@ class TeamController extends Controller
         $team->delete();
         return redirect()->route('teams.index')->with('success', 'Team deleted successfully!');
     }
+
 }
+
 

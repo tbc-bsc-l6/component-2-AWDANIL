@@ -7,11 +7,26 @@ use Illuminate\Http\Request;
 class PlayerController extends Controller
 {
     // List all players
-    public function index()
+    public function index(Request $request)
     {
-        $players = Player::all();
+        $query = Player::query(); // Start a query for the Player model
+    
+        // Add Search Functionality
+        if ($request->filled('search')) {
+            $query->where('name', 'like', '%' . $request->search . '%');
+        }
+    
+        // Add Sorting Functionality
+        if ($request->filled('sort')) {
+            $sortBy = $request->sort; // Column to sort by
+            $sortDirection = $request->direction === 'desc' ? 'desc' : 'asc'; // Sort direction (asc/desc)
+            $query->orderBy($sortBy, $sortDirection);
+        }
+    
+        $players = $query->get(); // Fetch the results
         return view('players.index', compact('players'));
     }
+    
 
     // Show form to add a player
     public function create()
@@ -57,4 +72,10 @@ class PlayerController extends Controller
         $player->delete();
         return redirect()->route('players.index')->with('success', 'Player deleted successfully!');
     }
+
+
+    
+
+
 }
+
