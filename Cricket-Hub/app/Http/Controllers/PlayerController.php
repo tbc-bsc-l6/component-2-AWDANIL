@@ -16,6 +16,15 @@ class PlayerController extends Controller
             $query->where('name', 'like', '%' . $request->search . '%');
         }
     
+        // Filter by role
+        if ($request->filled('role')) {
+            $query->where('role', $request->role);
+        }
+
+        // Filter by team
+        if ($request->filled('team_id')) {
+            $query->where('team_id', $request->team_id);
+        }
         // Add Sorting Functionality
         if ($request->filled('sort')) {
             $sortBy = $request->sort; // Column to sort by

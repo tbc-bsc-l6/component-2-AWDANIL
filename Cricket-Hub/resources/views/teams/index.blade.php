@@ -34,6 +34,16 @@
         <button type="submit">Search</button>
     </form>
 
+      <!-- Filter by City -->
+      <form method="GET" action="{{ route('teams.index') }}">
+        <select name="city" onchange="this.form.submit()">
+            <option value="">Filter by City</option>
+            <option value="New York" {{ request('city') == 'New York' ? 'selected' : '' }}>New York</option>
+            <option value="Los Angeles" {{ request('city') == 'Los Angeles' ? 'selected' : '' }}>Los Angeles</option>
+            <option value="Chicago" {{ request('city') == 'Chicago' ? 'selected' : '' }}>Chicago</option>
+        </select>
+    </form>
+
     <!-- Sorting Links -->
     <h3>Sort By:</h3>
     <a href="{{ route('teams.index', ['sort' => 'name', 'direction' => 'asc']) }}">Name Ascending</a> |

@@ -16,6 +16,10 @@ class TeamController extends Controller
         if ($request->filled('search')) {
             $query->where('name', 'like', '%' . $request->search . '%');
         }
+        // Filter by city
+        if ($request->filled('city')) {
+            $query->where('city', $request->city);
+         }
     
         // Add Sorting Functionality
         if ($request->filled('sort')) {

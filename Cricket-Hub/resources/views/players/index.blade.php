@@ -33,6 +33,26 @@
         <button type="submit">Search</button>
     </form>
 
+    <!-- Filter by Role -->
+    <form method="GET" action="{{ route('players.index') }}">
+        <select name="role" onchange="this.form.submit()">
+            <option value="">Filter by Role</option>
+            <option value="Batsman" {{ request('role') == 'Batsman' ? 'selected' : '' }}>Batsman</option>
+            <option value="Bowler" {{ request('role') == 'Bowler' ? 'selected' : '' }}>Bowler</option>
+            <option value="All-Rounder" {{ request('role') == 'All-Rounder' ? 'selected' : '' }}>All-Rounder</option>
+        </select>
+    </form>
+
+    <!-- Filter by Team -->
+    <form method="GET" action="{{ route('players.index') }}">
+        <select name="team_id" onchange="this.form.submit()">
+            <option value="">Filter by Team</option>
+            @foreach (App\Models\Team::all() as $team)
+                <option value="{{ $team->id }}" {{ request('team_id') == $team->id ? 'selected' : '' }}>{{ $team->name }}</option>
+            @endforeach
+        </select>
+    </form>
+
     <!-- Sorting Links -->
     <h3>Sort By:</h3>
     <a href="{{ route('players.index', ['sort' => 'name', 'direction' => 'asc']) }}">Name Ascending</a> |
