@@ -55,5 +55,14 @@
             <li>{{ $team->name }} (Coach: {{ $team->coach }}, City: {{ $team->city }})</li>
         @endforeach
     </ul>
+
+    
+    <h1>Teams</h1>
+    
+    @foreach ($teams as $team)
+        <x-team-card :team="$team" />
+
+    @endforeach
+    
 </body>
 </html>

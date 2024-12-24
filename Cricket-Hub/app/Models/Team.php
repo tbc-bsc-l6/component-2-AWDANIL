@@ -10,5 +10,9 @@ class Team extends Model
     use HasFactory;
 
     protected $fillable = ['name', 'coach', 'city']; // Add fillable fields here
+    public function players()
+    {
+        return $this->hasMany(Player::class);
+    }
 }
 

@@ -9,6 +9,7 @@ class PlayerController extends Controller
     // List all players
     public function index(Request $request)
     {
+        $players = Player::all(); // Fetch all players
         $query = Player::query(); // Start a query for the Player model
     
         // Add Search Functionality

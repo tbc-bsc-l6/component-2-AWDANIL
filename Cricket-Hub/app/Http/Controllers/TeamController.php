@@ -10,6 +10,7 @@ class TeamController extends Controller
     // Display a list of all teams
     public function index(Request $request)
     {
+        $teams = Team::all(); // Fetch all teams
         $query = Team::query(); // Start a query for the Team model
     
         // Add Search Functionality

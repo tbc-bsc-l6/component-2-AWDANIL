@@ -11,4 +11,8 @@ class Player extends Model
 
     // Allow mass assignment for these fields
     protected $fillable = ['name', 'role', 'batting_average'];
+    public function team()
+    {
+        return $this->belongsTo(Team::class);
+    }
 }

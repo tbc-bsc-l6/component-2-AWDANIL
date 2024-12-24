@@ -71,5 +71,11 @@
             </li>
         @endforeach
     </ul>
+
+    <h1>Players</h1>
+
+    @foreach ($players as $player)
+        <x-player-card :player="$player" />
+    @endforeach
 </body>
 </html>
