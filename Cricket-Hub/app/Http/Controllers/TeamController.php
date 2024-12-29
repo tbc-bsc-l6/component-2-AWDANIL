@@ -30,6 +30,7 @@ class TeamController extends Controller
         }
     
         $teams = $query->get(); // Fetch the results
+        $teams = $query->paginate(12); // Paginate results (10 per page)
         return view('teams.index', compact('teams'));
     }
     

@@ -1,0 +1,112 @@
+body {
+    background-color: #f8f9fa; /* Light gray background color */
+}
+.container {
+    background-color: #cbe4aa; /* White background for the container */
+    border-radius: 8px; /* Rounded corners */
+    padding: 20px; /* Padding inside the container */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.pagination-wrapper {
+    width: 100%; /* Ensure it takes up full width */
+    display: flex; /* Use Flexbox for centering */
+    justify-content: center; /* Horizontally centers the pagination */
+    align-items: center; /* Vertically centers the pagination */
+    margin-top: 20px; /* Add spacing above */
+    margin-bottom: 20px; /* Add spacing below */
+    text-align: center; /* Fallback for non-Flexbox behavior */
+}
+
+
+.pagination-info {
+    width: 100%; /* Ensure it takes up full width */
+    display: flex; /* Use Flexbox for centering */
+    justify-content: center; /* Horizontally centers the pagination */
+    align-items: center; /* Vertically centers the pagination */
+    margin-top: 0%; /* Add spacing above */
+    margin-bottom: 0px; /* Add spacing below */
+    text-align: center; /* Fallback for non-Flexbox behavior */
+    font-size: 14px; /* Smaller text for pagination info */
+    color: #555; /* Subtle gray color */
+}
+
+
+
+/* Pagination List */
+.pagination-wrapper .pagination {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Pagination Items */
+.pagination-wrapper .page-item {
+    margin: 0 5px; /* Add spacing between buttons */
+}
+
+/* Pagination Links */
+.pagination-wrapper .page-link {
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    color: #007bff;
+    text-decoration: none;
+    background-color: #fff;
+    transition: all 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Hover Effect */
+.pagination-wrapper .page-link:hover {
+    background-color: #007bff;
+    color: #fff;
+    border-color: #007bff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+}
+
+/* Active Page */
+.pagination-wrapper .page-item.active .page-link {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+    font-weight: bold;
+    pointer-events: none; /* Disable clicking on active page */
+}
+
+/* Disabled Page */
+.pagination-wrapper .page-item.disabled .page-link {
+    color: #aaa;
+    pointer-events: none;
+    background-color: #f8f9fa;
+    border-color: #ddd;
+}
+
+
+
+
+footer {
+    background-color: #f1f1f1; /* Light footer background */
+    padding: 20px;
+    margin-top: 10px; /* Add space between footer and pagination */
+    text-align: center;
+    font-size: 14px;
+    border-top: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for better separation */
+    width: 100%; /* Ensure footer spans the full width */
+}
+
+footer a {
+    color: #007bff;
+    text-decoration: none;
+    margin: 0 8px; /* Add horizontal spacing between links */
+    font-weight: 500;
+}
+
+footer a:hover {
+    color: #0056b3; /* Darker blue on hover */
+    text-decoration: underline;
+}
+

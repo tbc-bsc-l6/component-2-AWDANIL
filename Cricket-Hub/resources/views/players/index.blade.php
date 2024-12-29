@@ -3,45 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Players List</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #f8f9fa; /* Light gray background color */
-        }
-        .container {
-            background-color: #cbe4aa; /* White background for the container */
-            border-radius: 8px; /* Rounded corners */
-            padding: 20px; /* Padding inside the container */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-        }
-    </style>
+    <title>Players</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
-<body class="bg-light">
-    <div class="container mt-5">
-        <h1 class="text-center mb-4">Players List</h1>
+<body class="bg-gray-100 text-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Page Header -->
+        <header class="my-10">
+            <h1 class="text-4xl font-bold text-center text-teal-600">Players List</h1>
+        </header>
 
+        <!-- Success Message -->
         @if (session('success'))
-            <div class="alert alert-success text-center">{{ session('success') }}</div>
+            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-6 text-center">
+                {{ session('success') }}
+            </div>
         @endif
 
-        <div class="d-flex justify-content-end mb-3">
-            <a href="{{ route('players.create') }}" class="btn btn-success">Add New Player</a>
+        <!-- Add Player Button -->
+        <div class="flex justify-end mb-6">
+            <a href="{{ route('players.create') }}" class="bg-teal-600 text-white px-4 py-2 rounded shadow hover:bg-teal-700">Add New Player</a>
         </div>
 
         <!-- Search Form -->
-        <form method="GET" action="{{ route('players.index') }}" class="mb-4">
-            <div class="input-group">
-                <input type="text" name="search" placeholder="Search players" value="{{ request('search') }}" class="form-control">
-                <div class="input-group-append">
-                    <button type="submit" class="btn btn-primary">Search</button>
-                </div>
+        <form method="GET" action="{{ route('players.index') }}" class="mb-6">
+            <div class="flex items-center space-x-4">
+                <input
+                    type="text"
+                    name="search"
+                    placeholder="Search players"
+                    value="{{ request('search') }}"
+                    class="w-full px-4 py-2 border rounded focus:ring-teal-500 focus:border-teal-500"
+                />
+                <button type="submit" class="bg-teal-600 text-white px-4 py-2 rounded shadow hover:bg-teal-700">
+                    Search
+                </button>
             </div>
         </form>
 
         <!-- Filter by Role -->
-        <form method="GET" action="{{ route('players.index') }}" class="mb-4">
-            <select name="role" onchange="this.form.submit()" class="form-control">
+        <form method="GET" action="{{ route('players.index') }}" class="mb-6">
+            <select
+                name="role"
+                onchange="this.form.submit()"
+                class="w-full px-4 py-2 border rounded focus:ring-teal-500 focus:border-teal-500"
+            >
                 <option value="">Filter by Role</option>
                 <option value="Batsman" {{ request('role') == 'Batsman' ? 'selected' : '' }}>Batsman</option>
                 <option value="Bowler" {{ request('role') == 'Bowler' ? 'selected' : '' }}>Bowler</option>
@@ -50,8 +57,12 @@
         </form>
 
         <!-- Filter by Team -->
-        <form method="GET" action="{{ route('players.index') }}" class="mb-4">
-            <select name="team_id" onchange="this.form.submit()" class="form-control">
+        <form method="GET" action="{{ route('players.index') }}" class="mb-6">
+            <select
+                name="team_id"
+                onchange="this.form.submit()"
+                class="w-full px-4 py-2 border rounded focus:ring-teal-500 focus:border-teal-500"
+            >
                 <option value="">Filter by Team</option>
                 @foreach (App\Models\Team::all() as $team)
                     <option value="{{ $team->id }}" {{ request('team_id') == $team->id ? 'selected' : '' }}>{{ $team->name }}</option>
@@ -60,43 +71,66 @@
         </form>
 
         <!-- Sorting Links -->
-        <h3 class="mb-3">Sort By:</h3>
-        <div class="mb-4">
-            <a href="{{ route('players.index', ['sort' => 'name', 'direction' => 'asc']) }}" class="btn btn-link">Name Ascending</a>
-            <a href="{{ route('players.index', ['sort' => 'name', 'direction' => 'desc']) }}" class="btn btn-link">Name Descending</a>
-            <a href="{{ route('players.index', ['sort' => 'role', 'direction' => 'asc']) }}" class="btn btn-link">Role Ascending</a>
-            <a href="{{ route('players.index', ['sort' => 'role', 'direction' => 'desc']) }}" class="btn btn-link">Role Descending</a>
+        <div class="mb-6">
+            <h3 class="text-lg font-semibold mb-3">Sort By:</h3>
+            <div class="flex space-x-4">
+                <a href="{{ route('players.index', ['sort' => 'name', 'direction' => 'asc']) }}" class="text-teal-600 hover:underline">Name Ascending</a>
+                <a href="{{ route('players.index', ['sort' => 'name', 'direction' => 'desc']) }}" class="text-teal-600 hover:underline">Name Descending</a>
+                <a href="{{ route('players.index', ['sort' => 'role', 'direction' => 'asc']) }}" class="text-teal-600 hover:underline">Role Ascending</a>
+                <a href="{{ route('players.index', ['sort' => 'role', 'direction' => 'desc']) }}" class="text-teal-600 hover:underline">Role Descending</a>
+            </div>
         </div>
 
         <!-- Display Players -->
-        <div class="row">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             @foreach ($players as $player)
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $player->name }}</h5>
-                            <p class="card-text">Role: {{ $player->role }}</p>
-                            <p class="card-text">Batting Average: {{ $player->batting_average }}</p>
-                            @if ($player->team)
-                                <p class="card-text">Team: {{ $player->team->name }}</p>
-                            @endif
-                            <div class="d-flex justify-content-between">
-                                <a href="{{ route('players.edit', $player) }}" class="btn btn-warning">Edit</a>
-                                <form action="{{ route('players.destroy', $player) }}" method="POST" style="display: inline;">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">Delete</button>
-                                </form>
-                            </div>
-                        </div>
+                <div class="bg-white shadow rounded-lg p-6">
+                    <h5 class="text-xl font-bold text-teal-600">{{ $player->name }}</h5>
+                    <p class="text-gray-700">Role: {{ $player->role }}</p>
+                    <p class="text-gray-700">Batting Average: {{ $player->batting_average }}</p>
+                    @if ($player->team)
+                        <p class="text-gray-700">Team: {{ $player->team->name }}</p>
+                    @endif
+                    <div class="mt-4 flex space-x-2">
+                        <a
+                            href="{{ route('players.edit', $player) }}"
+                            class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600"
+                        >Edit</a>
+                        <form action="{{ route('players.destroy', $player) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button
+                                type="submit"
+                                class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700"
+                            >
+                                Delete
+                            </button>
+                        </form>
                     </div>
                 </div>
             @endforeach
         </div>
-    </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+          <!-- Pagination Section -->
+        <div class="pagination-wrapper">
+            {{ $players->links('pagination::default') }} <!-- Pagination Links -->
+        </div>
+
+        <div class="pagination-info">
+            Showing {{ $players->firstItem() }} to {{ $players->lastItem() }} of {{ $players->total() }} players
+        </div>
+
+        <!-- Footer -->
+        <footer class="mt-10 bg-gray-800 text-white py-6">
+            <div class="text-center">
+                <p>&copy; {{ date('Y') }} Cricket Hub. All Rights Reserved.</p>
+                <div class="mt-2">
+                    <a href="#" class="text-teal-400 hover:underline px-2">Privacy Policy</a>
+                    <a href="#" class="text-teal-400 hover:underline px-2">Terms of Service</a>
+                    <a href="#" class="text-teal-400 hover:underline px-2">Contact Us</a>
+                </div>
+            </div>
+        </footer>
+    </div>
 </body>
 </html>

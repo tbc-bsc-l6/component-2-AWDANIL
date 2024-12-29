@@ -34,6 +34,7 @@ class PlayerController extends Controller
         }
     
         $players = $query->get(); // Fetch the results
+        $players = $query->paginate(12); // Paginate results (10 per page)
         return view('players.index', compact('players'));
     }
     
