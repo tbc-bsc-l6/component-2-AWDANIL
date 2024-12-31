@@ -7,7 +7,8 @@
             {{ __('Once your account is deleted, all data will be permanently removed.') }}
         </p>
     </header>
-
+    
+    <script src="https://cdn.tailwindcss.com"></script>
     <form method="post" action="{{ route('profile.destroy') }}" class="space-y-4">
         @csrf
         @method('delete')

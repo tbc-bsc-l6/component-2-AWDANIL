@@ -4,6 +4,8 @@
             {{ __('Profile Information') }}
         </h4>
     </header>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
 
     <form method="post" action="{{ route('profile.update') }}" class="space-y-6">
         @csrf

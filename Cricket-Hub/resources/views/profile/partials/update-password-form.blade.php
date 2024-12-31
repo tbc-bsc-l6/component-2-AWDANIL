@@ -23,7 +23,7 @@
             <x-text-input id="password" name="password" type="password" class="mt-1 block w-full border-gray-300" autocomplete="new-password" />
             <x-input-error :messages="$errors->updatePassword->get('password')" class="mt-2" />
         </div>
-
+        <script src="https://cdn.tailwindcss.com"></script>
         <div>
             <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
             <x-text-input id="password_confirmation" name="password_confirmation" type="password" class="mt-1 block w-full border-gray-300" autocomplete="new-password" />

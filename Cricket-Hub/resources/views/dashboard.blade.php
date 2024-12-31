@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cricket Hub Dashboard</title>
+  
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
     <style>
@@ -59,16 +61,24 @@
                     </div>
                     <ul class="py-2">
                         <li class="px-4 py-2 hover:bg-gray-100">
-                            <a href="{{ route('profile.show') }}" class="text-gray-800"><i class="fas fa-user"></i> View Profile</a>
-
+                            <a href="{{ route('profile.edit') }}" class="text-gray-800">
+                                <i class="fas fa-user"></i> Edit Profile
+                            </a>
                         </li>
+                    
                         <li class="px-4 py-2 hover:bg-gray-100">
                             <form action="{{ route('logout') }}" method="POST">
                                 @csrf
-                                <button type="submit" class="text-red-500"><i class="fas fa-sign-out-alt"></i> Log Out</button>
+                                <button type="submit" class="text-red-500">
+                                    <i class="fas fa-sign-out-alt"></i> Log Out
+                                </button>
                             </form>
                         </li>
                     </ul>
+                    
+                    
+                        
+                
                 </div>
             </div>
         </div>
