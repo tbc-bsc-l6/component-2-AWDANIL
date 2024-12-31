@@ -23,11 +23,10 @@ Route::middleware('auth')->group(function () {
         return view('dashboard');
     })->name('dashboard');
 
-
-
-
-
 });
+Route::get('/register-sucess', function () {
+    return view('auth.register-sucess');
+})->name('register.sucess');
 
 
 

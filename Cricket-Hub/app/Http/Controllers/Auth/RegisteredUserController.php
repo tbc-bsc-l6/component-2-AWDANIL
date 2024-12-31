@@ -43,8 +43,9 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
-        Auth::login($user);
+        Auth::logout();
 
-        return redirect(route('dashboard', absolute: false));
+           return redirect()->route('register.sucess')->with('status', 'You have registered successfully!');
+
     }
 }
