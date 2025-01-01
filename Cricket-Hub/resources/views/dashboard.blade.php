@@ -132,17 +132,26 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-6">
-        <div class="container text-center">
-            <p>&copy; {{ date('Y') }} Cricket Hub. All Rights Reserved.</p>
-            <div class="mt-2">
-                <a href="#" class="text-teal-400 hover:underline px-2">Privacy Policy</a>
-                <a href="#" class="text-teal-400 hover:underline px-2">Terms of Service</a>
-                <a href="#" class="text-teal-400 hover:underline px-2">Contact Us</a>
+  <!-- Footer Section -->
+  <footer class="bg-gray-900 text-white py-10">
+    <div class="container mx-auto text-center">
+        <p>&copy; {{ date('Y') }} Cricket Hub. All Rights Reserved.</p>
+        <div class="mt-4">
+            <a href="#" class="text-teal-400 hover:underline px-4">Privacy Policy</a>
+            <a href="#" class="text-teal-400 hover:underline px-4">Terms of Service</a>
+            <a href="#" class="text-teal-400 hover:underline px-4">Contact Us</a>
+        </div>
+        <div class="mt-6">
+            <p>Follow Us:</p>
+            <div class="flex justify-center space-x-4 mt-2">
+                <a href="#" class="text-teal-400 hover:text-white"><i class="fab fa-facebook fa-lg"></i></a>
+                <a href="#" class="text-teal-400 hover:text-white"><i class="fab fa-twitter fa-lg"></i></a>
+                <a href="#" class="text-teal-400 hover:text-white"><i class="fab fa-instagram fa-lg"></i></a>
+                <a href="#" class="text-teal-400 hover:text-white"><i class="fab fa-youtube fa-lg"></i></a>
             </div>
         </div>
-    </footer>
+    </div>
+</footer>
 
     <!-- Dropdown Script -->
     <script>

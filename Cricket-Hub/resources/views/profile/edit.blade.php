@@ -46,10 +46,29 @@
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-6">
-        <div class="max-w-7xl mx-auto text-center">
-            <p>&copy; {{ date('Y') }} My Application. All Rights Reserved.</p>
+   <!-- Footer Section -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+   <footer class="bg-gray-900 text-white py-10">
+    <div class="max-w-7xl mx-auto text-center">
+        <p class="text-sm">
+            &copy; {{ date('Y') }} Cricket Hub. All Rights Reserved.
+        </p>
+        <div class="mt-4 flex justify-center space-x-8">
+            <a href="#" class="text-teal-400 hover:underline">Privacy Policy</a>
+            <a href="#" class="text-teal-400 hover:underline">Terms of Service</a>
+            <a href="#" class="text-teal-400 hover:underline">Contact Us</a>
         </div>
-    </footer>
+        <div class="mt-6">
+            <p>Follow Us:</p>
+            <div class="flex justify-center space-x-6 mt-2">
+                <a href="#" class="text-teal-400 hover:text-white"><i class="fab fa-facebook fa-lg"></i></a>
+                <a href="#" class="text-teal-400 hover:text-white"><i class="fab fa-twitter fa-lg"></i></a>
+                <a href="#" class="text-teal-400 hover:text-white"><i class="fab fa-instagram fa-lg"></i></a>
+                <a href="#" class="text-teal-400 hover:text-white"><i class="fab fa-youtube fa-lg"></i></a>
+            </div>
+        </div>
+    </div>
+</footer>
+
 </x-app-layout>

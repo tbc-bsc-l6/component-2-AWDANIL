@@ -6,56 +6,78 @@
     <title>Welcome to Cricket Hub</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
     <style>
-        /* Hero Section Styling */
+        /* Fix opacity and enhance visibility */
         .hero {
             background-image: url('https://source.unsplash.com/1600x900/?cricket,stadium');
             background-size: cover;
             background-position: center;
-            height: 60vh;
+            height: 80vh;
             position: relative;
         }
         .hero-overlay {
             position: absolute;
             inset: 0;
-            background-color: rgba(0, 0, 0, 0.6);
+            background-color: rgba(0, 0, 0, 0.5); /* Lowered opacity for better visibility */
         }
         .hero-content {
             position: relative;
             z-index: 1;
         }
-
-        /* Feature Card Hover Animation */
-        .card:hover {
-            transform: scale(1.05);
-            transition: transform 0.3s ease-in-out;
+        .fade-in {
+            animation: fadeIn 1.5s ease-in-out;
         }
-        .feature-icon:hover {
-            transform: scale(1.2);
-            color: #14b8a6;
-        }
-
-        /* Smooth Scrolling */
-        html {
-            scroll-behavior: smooth;
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
     </style>
 </head>
 <body class="bg-gray-100 text-gray-800">
 
-    <!-- Hero Section -->
-    <div class="hero">
-        <div class="hero-overlay"></div>
-        <div class="container mx-auto h-full flex flex-col items-center justify-center text-center text-white hero-content">
-            <h1 class="text-6xl font-extrabold mb-4">Welcome to Cricket Hub</h1>
-            <p class="text-xl mt-4">Your ultimate destination for everything cricket!</p>
-            <div class="mt-6">
-                <a href="{{ route('teams.index') }}" class="bg-teal-500 hover:bg-teal-600 text-white px-8 py-3 rounded-lg shadow-lg mr-4 transition-all duration-300">View Teams</a>
-                <a href="{{ route('players.index') }}" class="border border-teal-500 hover:bg-teal-500 hover:text-white text-teal-500 px-8 py-3 rounded-lg shadow-lg transition-all duration-300">View Players</a>
+     <!-- Navbar -->
+     <nav class="bg-gray-800 text-white py-4 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="text-2xl font-bold">Cricket Hub</div>
+            <ul class="flex space-x-6">
+                <li><a href="/" class="hover:text-teal-400">Home</a></li>
+                <li><a href="{{ route('teams.index') }}" class="hover:text-teal-400">Teams</a></li>
+                <li><a href="{{ route('players.index') }}" class="hover:text-teal-400">Players</a></li>
+                <li><a href="{{ route('about-us') }}" class="hover:text-teal-400">About Us</a></li>
+                <li><a href="{{ route('contact-us') }}" class="hover:text-teal-400">Contact Us</a></li>
+            </ul>
+            <div>
+                <a href="{{ route('login') }}" class="bg-indigo-500 hover:bg-indigo-600 text-white px-6 py-3 rounded-md shadow-lg transition-all duration-300">
+                    Login
+                </a>
+                <a href="{{ route('register') }}" class="border border-indigo-500 hover:bg-indigo-500 hover:text-white text-indigo-500 px-6 py-3 rounded-md shadow-lg transition-all duration-300">
+                    Sign Up
+                </a>
+                
+                
             </div>
         </div>
+    </nav>
+
+    <!-- Hero Section -->
+<div
+class="hero relative bg-cover bg-center text-white"
+style="background-image: url('/images/1.jpg');">
+<div class="hero-overlay bg-black bg-opacity-50 absolute inset-0"></div>
+<div class="container mx-auto flex flex-col items-center justify-center h-full text-center hero-content fade-in">
+    <h1 class="text-6xl font-extrabold mb-4">Welcome to Cricket Hub</h1>
+    <p class="text-xl mt-4">Your ultimate destination for everything cricket!</p>
+    <div class="mt-6 flex space-x-4">
+        <a href="{{ route('teams.index') }}" class="bg-teal-500 hover:bg-teal-600 text-white px-6 py-3 rounded-lg shadow-lg">View Teams</a>
+        <a href="{{ route('players.index') }}" class="border border-teal-500 hover:bg-teal-500 hover:text-white text-teal-500 px-6 py-3 rounded-lg shadow-lg">View Players</a>
     </div>
+</div>
+</div>
+
 
     <!-- Features Section -->
     <div class="container mx-auto my-16">
@@ -86,12 +108,10 @@
     </div>
 
     <!-- Call to Action Section -->
-    <div class="bg-teal-500 py-16">
-        <div class="container mx-auto text-center text-white">
-            <h2 class="text-4xl font-extrabold mb-4">Ready to Dive In?</h2>
-            <p class="text-lg mb-6">Join Cricket Hub and take your love for cricket to the next level.</p>
-            <a href="{{ route('teams.index') }}" class="bg-white text-teal-500 px-8 py-3 rounded-md font-semibold shadow-md hover:bg-gray-100">Get Started</a>
-        </div>
+    <div class="bg-teal-500 py-16 text-center text-white">
+        <h2 class="text-4xl font-bold mb-4">Ready to Dive In?</h2>
+        <p class="text-lg mb-6">Join Cricket Hub and take your love for cricket to the next level.</p>
+        <a href="{{ route('register') }}" class="bg-white text-teal-500 px-6 py-3 rounded-md font-bold hover:bg-gray-100">Get Started</a>
     </div>
 
     <!-- Footer Section -->
@@ -103,14 +123,11 @@
                 <a href="#" class="text-teal-400 hover:underline px-4">Terms of Service</a>
                 <a href="#" class="text-teal-400 hover:underline px-4">Contact Us</a>
             </div>
-            <div class="mt-6">
-                <p>Follow Us:</p>
-                <div class="flex justify-center space-x-4 mt-2">
-                    <a href="#" class="text-teal-400 hover:text-white"><i class="fab fa-facebook fa-lg"></i></a>
-                    <a href="#" class="text-teal-400 hover:text-white"><i class="fab fa-twitter fa-lg"></i></a>
-                    <a href="#" class="text-teal-400 hover:text-white"><i class="fab fa-instagram fa-lg"></i></a>
-                    <a href="#" class="text-teal-400 hover:text-white"><i class="fab fa-youtube fa-lg"></i></a>
-                </div>
+            <div class="mt-6 flex justify-center space-x-4">
+                <a href="#" class="text-teal-400 hover:text-white"><i class="fab fa-facebook fa-lg"></i></a>
+                <a href="#" class="text-teal-400 hover:text-white"><i class="fab fa-twitter fa-lg"></i></a>
+                <a href="#" class="text-teal-400 hover:text-white"><i class="fab fa-instagram fa-lg"></i></a>
+                <a href="#" class="text-teal-400 hover:text-white"><i class="fab fa-youtube fa-lg"></i></a>
             </div>
         </div>
     </footer>
