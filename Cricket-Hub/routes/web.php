@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\PlayerController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Middleware\RoleMiddleware;
 use Illuminate\Support\Facades\Route;
 
@@ -39,9 +40,6 @@ Route::middleware(['auth'])->group(function () {
 });
 
 
-
-
-
 // Admin Routes with Role Middleware
 Route::middleware(['auth', RoleMiddleware::class . ':admin'])->group(function () {
     Route::resource('teams', TeamController::class);
@@ -52,13 +50,16 @@ Route::middleware(['auth', RoleMiddleware::class . ':admin'])->group(function ()
     })->name('admin.dashboard');
 });
 
+
 // Customer Routes (optional)
 Route::middleware(['auth', RoleMiddleware::class . ':customer'])->group(function () {
     Route::resource('teams', TeamController::class);
     Route::resource('players', PlayerController::class);
 
+Route::get('/cricket/index', [DashboardController::class, 'fetchLiveMatches'])->name('index');
+
+
 
 });
-
 // Include Authentication Routes
 require __DIR__.'/auth.php';
