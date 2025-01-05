@@ -12,19 +12,19 @@ class CricketApiService
     public function __construct()
     {
         $this->apiKey = env('CRICAPI_KEY'); // Store API Key in .env file
-        $this->baseUrl = 'https://api.cricapi.com/v1/cricScore/'; // Base URL only
+        $this->baseUrl = 'https://api.cricapi.com/v1/currentMatches/'; // Base URL only
     }
 
     public function getLiveMatches()
     {
-        // Use 'matches' endpoint
-        $response = Http::withOutVerifying()->get($this->baseUrl,[
-     
-            'apikey' => $this->apiKey,
-        ]);
-
+        $response = Http::withOptions(['verify' => false])
+            ->get('https://api.cricapi.com/v1/currentMatches', [
+                'apikey' => $this->apiKey,
+            ]);
+    
         return $response->json();
     }
+    
 
 
   

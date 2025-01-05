@@ -131,6 +131,7 @@
             </div>
         </div>
     </section>
+    
 
   <!-- Footer Section -->
   <footer class="bg-gray-900 text-white py-10">

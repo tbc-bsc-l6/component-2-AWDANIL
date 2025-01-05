@@ -7,16 +7,19 @@ use App\Services\CricketApiService;
 class DashboardController extends Controller
 {
     public function index(CricketApiService $cricketApiService)
-    {
-        $liveMatches = $cricketApiService->getLiveMatches();
-    
-        if (is_null($liveMatches)) {
-            return view('cricket/index', ['error' => 'No data available.']);
-        }
-    
-        return view('cricket/index', ['matches' => $liveMatches]);
+{
+    $response = $cricketApiService->getLiveMatches();
+
+    if ($response && isset($response['status']) && $response['status'] === 'success') {
+        $matches = $response['data']; // Extract the matches
+    } else {
+        $matches = [];
     }
-     
+
+    return view('<cricket>index', compact('matches'));
+}
+
+    
     
     
     public function fetchLiveMatches(CricketApiService $cricketApiService)
@@ -31,12 +34,12 @@ class DashboardController extends Controller
             return strtolower($match['status']) === 'live';
         });
 
-        return view('cricket/index', [
+        return view('<cricket>index', [
             'matches' => $liveMatches,
             'message' => count($liveMatches) > 0 ? '' : 'No live matches currently available.',
         ]);
     } else {
-        return view('cricket/index', [
+        return view('<cricket>index', [
             'matches' => [],
             'message' => 'No matches available at the moment.',
         ]);
