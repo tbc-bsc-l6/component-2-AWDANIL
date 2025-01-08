@@ -2,47 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\CricketApiService;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class DashboardController extends Controller
 {
-    public function index(CricketApiService $cricketApiService)
-{
-    $response = $cricketApiService->getLiveMatches();
-
-    if ($response && isset($response['status']) && $response['status'] === 'success') {
-        $matches = $response['data']; // Extract the matches
-    } else {
-        $matches = [];
-    }
-
-    return view('<cricket>index', compact('matches'));
-}
-
-    
-    
-    
-    public function fetchLiveMatches(CricketApiService $cricketApiService)
-{
-    $response = $cricketApiService->getLiveMatches();
-
-    // Debugging output
-    dd($response);
-
-    if (isset($response['data']) && count($response['data']) > 0) {
-        $liveMatches = array_filter($response['data'], function ($match) {
-            return strtolower($match['status']) === 'live';
-        });
-
-        return view('<cricket>index', [
-            'matches' => $liveMatches,
-            'message' => count($liveMatches) > 0 ? '' : 'No live matches currently available.',
+    public function showApiData()
+    {
+        // Fetch API response
+        $response = Http::withoutVerifying()->get('https://api.cricapi.com/v1/currentMatches', [
+            'apikey' => 'bfbe0a69-e2d4-4c23-a743-fbdcd3e4ddec',
         ]);
-    } else {
-        return view('<cricket>index', [
-            'matches' => [],
-            'message' => 'No matches available at the moment.',
-        ]);
+
+        // Decode JSON response
+        $data = $response->json();
+
+        // Check if the data is valid and available
+        $matches = isset($data['data']) && is_array($data['data']) ? $data['data'] : [];
+
+        // Pass the matches to the view
+        return view('cricket.index', compact('matches'));
     }
-}
 }

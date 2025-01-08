@@ -22,8 +22,18 @@ class CricketApiService
                 'apikey' => $this->apiKey,
             ]);
     
-        return $response->json();
+    $data= $response->json();
+    // Check if the response contains data
+    if (isset($data['data']) && is_array($data['data'])) {
+        $matches = $data['data'];
+    } else {
+        $matches = []; // Default to empty if no matches
     }
+
+    return view('cricket.index', compact('matches'));
+}
+
+    
     
 
 

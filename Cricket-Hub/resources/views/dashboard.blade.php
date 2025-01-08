@@ -14,7 +14,7 @@
             transition: transform 0.3s ease-in-out;
         }
         .hero {
-            background-image: url('https://via.placeholder.com/1920x500');
+            background-image: url('images/2.jpg');
             background-size: cover;
             background-position: center;
             height: 50vh;
@@ -97,7 +97,7 @@
                 <!-- Total Players -->
                 <div class="card p-6 bg-white shadow-lg rounded-lg">
                     <h3 class="text-lg font-bold text-gray-700">Total Players</h3>
-                    <p class="text-4xl font-bold text-green-600 mt-2">150</p>
+                    <p class="text-4xl font-bold text-green-600 mt-2">50+</p>
                 </div>
 
                 <!-- Upcoming Matches -->

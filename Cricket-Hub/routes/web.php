@@ -56,7 +56,8 @@ Route::middleware(['auth', RoleMiddleware::class . ':customer'])->group(function
     Route::resource('teams', TeamController::class);
     Route::resource('players', PlayerController::class);
 
-Route::get('/cricket/index', [DashboardController::class, 'fetchLiveMatches'])->name('<cricket>index');
+Route::get('/cricket/index', [DashboardController::class, 'showApiData'])->name('cricket/index');
+
 
 
 
