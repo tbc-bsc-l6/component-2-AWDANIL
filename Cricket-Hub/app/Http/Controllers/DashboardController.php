@@ -9,9 +9,10 @@ class DashboardController extends Controller
 {
     public function showApiData()
     {
+        $apiKey = env('CRICAPI_KEY');
         // Fetch API response
         $response = Http::withoutVerifying()->get('https://api.cricapi.com/v1/currentMatches', [
-            'apikey' => 'bfbe0a69-e2d4-4c23-a743-fbdcd3e4ddec',
+            'apikey' => $apiKey,
         ]);
 
         // Decode JSON response
