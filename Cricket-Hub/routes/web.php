@@ -8,9 +8,10 @@ use App\Http\Middleware\RoleMiddleware;
 use Illuminate\Support\Facades\Route;
 
 // Public Routes
-Route::get('/', function () {
+Route::get('/welcome', function () {
     return view('welcome');
-});
+})->name('welcome');
+
 
 Route::get('/register-sucess', function () {
     return view('auth.register-sucess');
@@ -56,7 +57,10 @@ Route::middleware(['auth', RoleMiddleware::class . ':customer'])->group(function
     Route::resource('teams', TeamController::class);
     Route::resource('players', PlayerController::class);
 
-Route::get('/cricket/index', [DashboardController::class, 'showApiData'])->name('cricket/index');
+
+
+    Route::get('/cricket/index', [DashboardController::class, 'index'])->name('cricket.index');
+    
 
 
 

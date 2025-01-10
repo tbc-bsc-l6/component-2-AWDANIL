@@ -8,6 +8,49 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    </head>
+    
+      <!-- Navbar -->
+      <nav class="bg-gray-800 text-white py-4 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="text-2xl font-bold">Cricket Hub</div>
+            <ul class="flex space-x-6">
+                <li><a href="{{ route('welcome') }}" class="hover:text-teal-400">Home</a></li>
+                <li><a href="{{ route('teams.index') }}" class="hover:text-teal-400">Teams</a></li>
+                <li><a href="{{ route('players.index') }}" class="hover:text-teal-400">Players</a></li>
+                <li><a href="{{ route('about-us') }}" class="hover:text-teal-400">About Us</a></li>
+                <li><a href="{{ route('contact-us') }}" class="hover:text-teal-400">Contact Us</a></li>
+                <div class="relative">
+                    <button id="profileDropdownButton" class="text-white px-4 py-2 bg-blue-600 rounded hover:bg-blue-700 focus:outline-none">
+                        <i class="fas fa-user"></i> {{ Auth::user()->name }}
+                    </button>
+                    <div id="profileDropdown" class="hidden absolute right-0 mt-2 bg-white shadow-md rounded-lg overflow-hidden w-48 z-50">
+                        <div class="p-4 text-center border-b">
+                            <p class="font-bold">{{ Auth::user()->name }}</p>
+                            <p class="text-sm text-gray-600">{{ Auth::user()->email }}</p>
+                        </div>
+                        <ul class="py-2">
+                            <li class="px-4 py-2 hover:bg-gray-100">
+                                <a href="{{ route('profile.edit') }}" class="text-gray-800">
+                                    <i class="fas fa-user"></i> Edit Profile
+                                </a>
+                            </li>
+                        
+                            <li class="px-4 py-2 hover:bg-gray-100">
+                                <form action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="text-red-500">
+                                        <i class="fas fa-sign-out-alt"></i> Log Out
+                                    </button>
+                                </form>
+                            </li>
+                        </ul>
+            </ul>
+        </div>
+      </nav>
     <style>
         .card:hover {
             transform: scale(1.05);
@@ -46,35 +89,13 @@
         </div>
     </section>
 
+    
+
     <!-- Navigation Bar with Profile Access -->
     <nav class="bg-gray-800 p-4">
         <div class="container mx-auto flex justify-between items-center">
             <h2 class="text-white font-bold text-xl">Cricket Hub</h2>
-            <div class="relative">
-                <button id="profileDropdownButton" class="text-white px-4 py-2 bg-blue-600 rounded hover:bg-blue-700 focus:outline-none">
-                    <i class="fas fa-user"></i> {{ Auth::user()->name }}
-                </button>
-                <div id="profileDropdown" class="hidden absolute right-0 mt-2 bg-white shadow-md rounded-lg overflow-hidden w-48 z-50">
-                    <div class="p-4 text-center border-b">
-                        <p class="font-bold">{{ Auth::user()->name }}</p>
-                        <p class="text-sm text-gray-600">{{ Auth::user()->email }}</p>
-                    </div>
-                    <ul class="py-2">
-                        <li class="px-4 py-2 hover:bg-gray-100">
-                            <a href="{{ route('profile.edit') }}" class="text-gray-800">
-                                <i class="fas fa-user"></i> Edit Profile
-                            </a>
-                        </li>
-                    
-                        <li class="px-4 py-2 hover:bg-gray-100">
-                            <form action="{{ route('logout') }}" method="POST">
-                                @csrf
-                                <button type="submit" class="text-red-500">
-                                    <i class="fas fa-sign-out-alt"></i> Log Out
-                                </button>
-                            </form>
-                        </li>
-                    </ul>
+         
                     
                     
                         

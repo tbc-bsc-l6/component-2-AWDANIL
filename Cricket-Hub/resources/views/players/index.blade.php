@@ -5,10 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Players</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    
 </head>
 <body class="bg-gray-100 text-gray-800">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-10.5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <!-- Navbar Section -->
+    <nav class="bg-gray-800 text-white">
+        <div class="container mx-auto px-4 flex justify-between items-center py-4">
+            <a href="#" class="text-xl font-bold">Cricket Hub</a>
+            <div class="hidden md:flex space-x-6">
+                <a href="{{ route('welcome') }}" class="hover:text-teal-400">Home</a>
+                <a href="{{ route('dashboard') }}" class="hover:text-teal-400">Dashboard</a>
+                <a href="{{ route('teams.index') }}" class="hover:text-teal-400">Teams</a>
+                <a href="{{ route('profile.edit') }}" class="hover:text-teal-400">My Profile</a>
+                <a href="{{ route('cricket.index') }}" class="hover:text-teal-400">Live Matches</a>
+            </div>
+            
+        </div>
+    </nav>
         <!-- Page Header -->
         <header class="my-10">
             <h1 class="text-4xl font-bold text-center text-teal-600">Players List</h1>
