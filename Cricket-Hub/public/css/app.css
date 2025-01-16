@@ -2,7 +2,7 @@ body {
     background-color: #f8f9fa; /* Light gray background color */
 }
 .container {
-    background-color: #cbe4aa; /* White background for the container */
+     /* White background for the container */
     border-radius: 8px; /* Rounded corners */
     padding: 20px; /* Padding inside the container */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */

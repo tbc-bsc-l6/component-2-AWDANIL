@@ -7,10 +7,12 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Middleware\RoleMiddleware;
 use Illuminate\Support\Facades\Route;
 
+
 // Public Routes
-Route::get('/welcome', function () {
+Route::get('/', function () {
     return view('welcome');
-})->name('welcome');
+});
+
 
 
 Route::get('/register-sucess', function () {

@@ -18,7 +18,7 @@
         <div class="container mx-auto flex justify-between items-center">
             <div class="text-2xl font-bold">Cricket Hub</div>
             <ul class="flex space-x-6">
-                <li><a href="{{ route('welcome') }}" class="hover:text-teal-400">Home</a></li>
+                <li><a href="/" class="hover:text-teal-400">Home</a></li>
                 <li><a href="{{ route('teams.index') }}" class="hover:text-teal-400">Teams</a></li>
                 <li><a href="{{ route('players.index') }}" class="hover:text-teal-400">Players</a></li>
                 <li><a href="{{ route('about-us') }}" class="hover:text-teal-400">About Us</a></li>
