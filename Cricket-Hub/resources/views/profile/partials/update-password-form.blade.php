@@ -29,6 +29,7 @@
             <x-text-input id="password_confirmation" name="password_confirmation" type="password" class="mt-1 block w-full border-gray-300" autocomplete="new-password" />
             <x-input-error :messages="$errors->updatePassword->get('password_confirmation')" class="mt-2" />
         </div>
+        
 
         <div class="flex justify-end">
             <x-primary-button>{{ __('Save Changes') }}</x-primary-button>

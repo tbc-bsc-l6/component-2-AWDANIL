@@ -15,6 +15,7 @@ Route::get('/', function () {
 
 
 
+
 Route::get('/register-sucess', function () {
     return view('auth.register-sucess');
 })->name('register.sucess');

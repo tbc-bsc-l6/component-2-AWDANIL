@@ -22,7 +22,7 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <!-- Image Section -->
                 <div>
-                    <img src="https://via.placeholder.com/600x400" alt="About Us" class="rounded-lg shadow-lg">
+                    <img src="/images/3.jpg" alt="About Us" class="rounded-lg shadow-lg">
                 </div>
                 <!-- Text Section -->
                 <div>
@@ -87,25 +87,25 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- Team Member 1 -->
                 <div class="text-center">
-                    <img src="https://via.placeholder.com/150" alt="Team Member" class="rounded-full mx-auto mb-4 shadow-lg">
+                    <img src="images/9.jpg" alt="Team Member" class="rounded-full mx-auto mb-4 shadow-lg">
                     <h3 class="text-lg font-bold">Anil Acharya</h3>
                     <p class="text-gray-600">Founder & CEO</p>
                 </div>
                 <!-- Team Member 2 -->
                 <div class="text-center">
-                    <img src="https://via.placeholder.com/150" alt="Team Member" class="rounded-full mx-auto mb-4 shadow-lg">
+                    <img src="/images/4.jpeg" alt="Team Member" class="rounded-full mx-auto mb-4 shadow-lg">
                     <h3 class="text-lg font-bold">Shahrukh Khan</h3>
                     <p class="text-gray-600">Head of Operations</p>
                 </div>
                 <!-- Team Member 3 -->
                 <div class="text-center">
-                    <img src="https://via.placeholder.com/150" alt="Team Member" class="rounded-full mx-auto mb-4 shadow-lg">
+                    <img src="/images/7.jpg" alt="Team Member" class="rounded-full mx-auto mb-4 shadow-lg">
                     <h3 class="text-lg font-bold">Pretti Zinta</h3>
                     <p class="text-gray-600">Lead Developer</p>
                 </div>
                 <!-- Team Member 4 -->
                 <div class="text-center">
-                    <img src="https://via.placeholder.com/150" alt="Team Member" class="rounded-full mx-auto mb-4 shadow-lg">
+                    <img src="/images/8.jpg" alt="Team Member" class="rounded-full mx-auto mb-4 shadow-lg">
                     <h3 class="text-lg font-bold">Ranbir Kapoor</h3>
                     <p class="text-gray-600">Marketing Specialist</p>
                 </div>
@@ -116,7 +116,7 @@
    <!-- Footer Section -->
    <footer class="bg-gray-900 text-white py-10">
         <div class="container mx-auto text-center">
-            <p>&copy; {{ date('Y') }} Cricket Hub. All Rights Reserved.</p>
+        <p>&copy; <?php echo date('Y'); ?> Cricket Hub. All Rights Reserved.</p>
             <div class="mt-4">
                 <a href="#" class="text-teal-400 hover:underline px-4">Privacy Policy</a>
                 <a href="#" class="text-teal-400 hover:underline px-4">Terms of Service</a>

@@ -56,16 +56,39 @@
                 <li><a href="{{ route('about-us') }}" class="hover:text-teal-400">About Us</a></li>
                 <li><a href="{{ route('contact-us') }}" class="hover:text-teal-400">Contact Us</a></li>
             </ul>
-            <div>
-                <a href="{{ route('login') }}" class="bg-indigo-500 hover:bg-indigo-600 text-white px-6 py-3 rounded-md shadow-lg transition-all duration-300">
-                    Login
-                </a>
-                <a href="{{ route('register') }}" class="border border-indigo-500 hover:bg-indigo-500 hover:text-white text-indigo-500 px-6 py-3 rounded-md shadow-lg transition-all duration-300">
-                    Sign Up
-                </a>
-                
-                
+            <div class="flex items-center space-x-4">
+                @auth
+                    <!-- Show username, Edit Profile, and Logout for logged-in users -->
+                    <div class="relative">
+                        <button id="profileDropdownButton" class="text-white px-4 py-2 bg-blue-600 rounded hover:bg-blue-700 focus:outline-none">
+                            <i class="fas fa-user"></i> {{ Auth::user()->name }}
+                        </button>
+                        <div id="profileDropdown" class="hidden absolute right-0 mt-2 bg-white shadow-md rounded-lg overflow-hidden w-48 z-50">
+                            <div class="p-4 text-center border-b">
+                                <p class="font-bold">{{ Auth::user()->name }}</p>
+                                <p class="text-sm text-gray-600">{{ Auth::user()->email }}</p>
+                            </div>
+                            <ul class="py-2">
+                                <li class="px-4 py-2 hover:bg-gray-100">
+                                    <a href="{{ route('profile.edit') }}" class="text-gray-800">
+                                        <i class="fas fa-user"></i> Edit Profile
+                                    </a>
+                                </li>
+                                <li class="px-4 py-2 hover:bg-gray-100">
+                                    <form action="{{ route('logout') }}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="text-red-500">
+                                            <i class="fas fa-sign-out-alt"></i> Log Out
+                                        </button>
+                    
+                    </form>
+                @else
+                    <!-- Show Login and Sign Up for guests -->
+                    <a href="{{ route('login') }}" class="bg-teal-500 hover:bg-teal-600 text-white px-4 py-2 rounded-md">Login</a>
+                    <a href="{{ route('register') }}" class="border border-gray-500 hover:bg-teal-500 hover:text-white text-teal-500 px-4 py-2 rounded-md">Sign Up</a>
+                @endauth
             </div>
+            
         </div>
     </nav>
 
@@ -139,5 +162,18 @@ style="background-image: url('/images/1.jpg');">
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+    <!-- Dropdown Script -->
+    <script>
+        document.getElementById('profileDropdownButton').addEventListener('click', () => {
+            const dropdown = document.getElementById('profileDropdown');
+            dropdown.classList.toggle('hidden');
+        });
+        document.addEventListener('click', (event) => {
+            const dropdown = document.getElementById('profileDropdown');
+            if (!event.target.closest('#profileDropdownButton')) {
+                dropdown.classList.add('hidden');
+            }
+        });
+    </script>
 </body>
 </html>
