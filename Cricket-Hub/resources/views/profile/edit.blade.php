@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-8">
             <!-- Profile Overview -->
             <div class="bg-white dark:bg-gray-800 shadow rounded-lg p-6 flex items-center gap-6">
-                <img src="https://via.placeholder.com/100" alt="User Avatar" class="w-24 h-24 rounded-full shadow-md border-2 border-gray-300">
+                <img src="/images/9.jpg" alt="User Avatar" class="w-24 h-24 rounded-full shadow-md border-2 border-gray-300">
                 <div>
                     <h3 class="text-2xl font-bold text-gray-900 dark:text-gray-100">{{ $user->name }}</h3>
                     <p class="text-sm text-gray-600 dark:text-gray-400">{{ $user->email }}</p>

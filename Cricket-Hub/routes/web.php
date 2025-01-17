@@ -69,6 +69,7 @@ Route::middleware(['auth', RoleMiddleware::class . ':admin'])->group(function ()
     })->name('admin.dashboard'); // Admin dashboard
 });
 
+<<<<<<< HEAD
 /**
  * Customer Routes
  * 
@@ -86,3 +87,22 @@ Route::middleware(['auth', RoleMiddleware::class . ':customer'])->group(function
 
 // Include Authentication Routes (default Laravel authentication routes)
 require __DIR__ . '/auth.php';
+=======
+
+// Customer Routes (optional)
+//Route::middleware(['auth', RoleMiddleware::class . ':customer'])->group(function () {
+  //  Route::resource('teams', TeamController::class);
+  //  Route::resource('players', PlayerController::class);
+
+
+
+    Route::get('/cricket/index', [DashboardController::class, 'index'])->name('cricket.index');
+    
+
+
+
+
+//});
+// Include Authentication Routes
+require __DIR__.'/auth.php';
+>>>>>>> c6bf595513fdc353330ce9f6966cc62c3ddc6881
