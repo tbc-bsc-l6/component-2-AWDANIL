@@ -30,7 +30,7 @@
         <!-- Page Header -->
         <header class="my-10">
             <!-- Page Title -->
-            <h1 class="text-4xl font-bold text-center text-teal-600">Players List</h1>
+            <h1 class="text-4xl font-bold text-center text-teal-600">Players </h1>
         </header>
 
         <!-- Success Message -->
@@ -144,7 +144,7 @@
             {{ $players->links('pagination::default') }}
         </div>
         <div class="pagination-info">
-            <!-- Pagination info (e.g., showing X to Y of Z) -->
+            <!-- Pagination info -->
             Showing {{ $players->firstItem() }} to {{ $players->lastItem() }} of {{ $players->total() }} players
         </div>
 

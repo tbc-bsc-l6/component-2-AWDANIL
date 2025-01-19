@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
             TeamSeeder::class,
         ]);
 
-        // Create an Admin User
+        // Create an Admin User(Hardcoded Credentials)
         User::create([
             'name' => 'Admin User',
             'email' => 'anilacharya884@gmail.com',
@@ -35,12 +35,7 @@ class DatabaseSeeder extends Seeder
             'role' => 'admin', // Set the role as admin
         ]);
 
-        // Create a Customer User
-        User::create([
-            'name' => 'Customer User',
-            'email' => 'customer@example.com',
-            'password' => bcrypt('password'), // Securely hash the password
-            'role' => 'customer', // Set the role as customer
-        ]);
+        //Customer User can login via registration
+        
     }
 }
